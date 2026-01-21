@@ -1,9 +1,42 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/72n2o9cT)
+
 # Lab 2: Test-Driven Development with Vitest
 
 ## Week 2 | Testing II (TDD)
 
-## Overview
+## Reflection Questions 
+
+### 2.1
+**Question:** Why do we intentionally write a failing test first? How does this relate to what Fowler describes as "state verification"?
+
+**Answer**: In TDD, we write failing tests first to have the confidence that the test CAN fail. With state verification, we are testing specific functionalities and it is critiacally important that the test will fail if there is a bug. That is why we confirm a failing test first before writing the code to make the test pass.
+
+### 2.4
+**Question:** In the mockist vs. classicist debate from Fowler's article, which approach are we using here? Why don't we need any test doubles for this function?
+
+**Answer:** This is classic TDD. We do not need any test doubles because we are only testing basic functionality of a simple math function. We have no outside dependencies or more complex tasks we need to test for at this time, therefore, no need for mocks or test doubles. 
+
+### 3.3 
+**Question:** Notice that we changed the implementation (added rounding), but our tests still pass because we used toBeCloseTo. This is what Kent C. Dodds means by "not testing implementation details." What would a test that does test implementation details look like?
+
+**Answer:** A test that tests specific implementation details would test for the exact value correctly rounded to two decimal places for the calculateTax() function. 
+
+For example, instead of:
+
+```typescript
+  it("calculates tax on a price", () => {
+    expect(calculateTax(100, 8.5)).toBeCloseTo(8.5, 2);
+  });
+```
+
+We would test for the specific value (get rid of .toBeCloseTo()):
+```typescript
+  it("calculates tax on a price", () => {
+    expect(calculateTax(100, 8.5)).toBe(8.5);
+  });
+```
+
+# Overview
 
 In this lab, you'll build a shopping cart price calculator using **Test-Driven Development (TDD)**. Rather than writing code first and tests second, you'll practice the Red-Green-Refactor cycle: write a failing test, write just enough code to pass it, then improve your code's design.
 
