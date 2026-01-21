@@ -4,6 +4,47 @@
 
 ## Week 2 | Testing II (TDD)
 
+This repo practices the princicples of TDD using basic functions to calculate sales tax and discounts for certain purchases. This is part of 2nd week's lab for CSE325 - Software Design and Principles.
+
+Contributors - Patrick Neill 1/20/26
+
+## Running Tests
+
+Use any of the following commands:
+```bash
+npm test
+npm run test
+npm run test:Watch
+npm run test:coverage
+```
+
+## Functions Implemented
+
+The following funcitons were implemented:
+```javascript
+export function calculateTax(
+  price: number,
+  taxRate: number,
+  isTaxExempt: boolean = false
+): number 
+```
+
+This function calculates the tax for a given item at a given tax rate. If the item is tax-exempt, it returns 0.
+
+```javascript
+export function applyDiscount(price: number, discountPercent: number): number
+```
+This function takes the price for an item and a given discount percentage and returns the new price after discount.
+
+```javascript
+export function calculateTotal(
+  items: CartItem[],
+  discountPercent: number = 0,
+  taxRate: number = 0
+): CartTotals 
+```
+This function takes an array of CartItem objects, and calculates the total tax and total for all items in the cart. It applies discounts before calculating tax. It returns a CartTotal object which has all relevant purchase information that would be present on a normal receipt.
+
 ## Reflection Questions 
 
 ### 2.1
